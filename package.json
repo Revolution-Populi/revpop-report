@@ -1,0 +1,44 @@
+{
+  "name": "bitshares-report",
+  "version": "2.0.0",
+  "description": "Create a CSV export of content from the Bitshares Blockchain for use with Cointracking.info",
+  "main": "./dist/index.js",
+  "jsnext:main": "./es/index.js",
+  "author": "svk31",
+  "license": "MIT",
+  "dependencies": {
+    "async": "^3.2.2",
+    "csv": "^6.0.5",
+    "moment": "^2.29.1",
+    "node-fetch": "2.6.6"
+  },
+  "devDependencies": {
+    "@revolutionpopuli/revpopjs": "file:../revpopjs",
+    "@babel/cli": "^7.16.7",
+    "@babel/core": "^7.16.7",
+    "@babel/eslint-parser": "^7.16.5",
+    "assert": "^2.0.0",
+    "bitsharesjs": "^6.0.0-rc1",
+    "browserify": "^17.0.0",
+    "cross-env": "^7.0.3",
+    "eslint": "^8.6.0",
+    "husky": "^7.0.4",
+    "prettier": "^2.5.1",
+    "pretty-quick": "^3.1.3",
+    "rimraf": "^3.0.2",
+    "uglify-js": "^3.14.5"
+  },
+  "scripts": {
+    "start": "cross-env NODE_ENV=node node lib/src/app.js",
+    "build:watch": "babel lib -d dist --watch",
+    "clean": "rimraf dist build es",
+    "prebuild": "yarn run clean",
+    "build": "cross-env BABEL_ENV=cjs babel lib -d dist",
+    "build-es": "cross-env BABEL_ENV=es babel lib -d es",
+    "postbuild": "yarn run build-es",
+    "precommit": "pretty-quick --staged",
+    "prebrowserify": "yarn run build",
+    "browserify": "cross-env NODE_ENV=production browserify dist/index.js --standalone index -o build/index.js -d",
+    "postbrowserify": "cross-env NODE_ENV=production uglifyjs --compress --mangle --sequences --drop_console --mangle-props --screw-ie8 --output build/index.min.js -- build/index.js"
+  }
+}
