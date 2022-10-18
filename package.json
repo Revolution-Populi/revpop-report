@@ -1,11 +1,11 @@
 {
-  "name": "bitshares-report",
+  "name": "@revolutionpopuli/revpop-report",
   "version": "2.0.0",
-  "description": "Create a CSV export of content from the Bitshares Blockchain for use with Cointracking.info",
+  "description": "Create a CSV export of content from the RevPop Blockchain",
   "main": "./dist/index.js",
   "jsnext:main": "./es/index.js",
-  "author": "svk31",
-  "license": "MIT",
+  "author": "Revolution Populi Limited <robert.b.rosenthal@gmail.com>",
+  "license": "GPLv3",
   "dependencies": {
     "async": "^3.2.2",
     "csv": "^6.0.5",
@@ -13,7 +13,7 @@
     "node-fetch": "2.6.6"
   },
   "devDependencies": {
-    "@revolutionpopuli/revpopjs": "file:../revpopjs",
+    "@revolutionpopuli/revpopjs": "^6.0.0",
     "@babel/cli": "^7.16.7",
     "@babel/core": "^7.16.7",
     "@babel/eslint-parser": "^7.16.5",
